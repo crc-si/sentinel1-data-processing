@@ -1,0 +1,69 @@
+source_type: s1g_gamma0_scene
+output_type: s1g_gamma0_switzerland
+
+description: Sentinel-1A/B SAR Gamma0, processed to the GEE ARD standard.
+
+location: '/datacube/ingested_data/S1G_SAR_GAMMA0/'
+file_path_template: 'Switzerland/S1G_SAR_GAMMA0_4326_{tile_index[0]}_{tile_index[1]}_{start_time}.nc'
+global_attributes:
+  title: CEOS SEO Data Cube Sentinel-1A/B SAR Gamma0 (GEE)
+  summary: Sentinel-1A/B Synthetic Aperture Radar Gamma0 data prepared using GEE
+  history: This data represents a tile and reprojection of Sentinel-1 SAR granule data.
+  institution: ESA
+  instrument: SAR
+  cdm_data_type: Grid
+  keywords: AU/GA,ESA,SAR,EARTH SCIENCE
+  keywords_vocabulary: GCMD
+  platform: SENTINEL-1
+  processing_level: L2
+  product_version: '1.0.0'
+  product_suite: Sentinel-1
+  project: ODC
+  coverage_content_type: physicalMeasurement
+  acknowledgment: Sentinel-1 data is provided by the European Space Agency on behalf of the European Commission, GEE was used to preprocess. 
+
+fuse_data: copy
+
+ingestion_bounds:
+  left: 6.02260949059
+  bottom: 45.7769477403
+  right: 10.4427014502
+  top: 47.8308275417
+
+storage:
+  driver: NetCDF CF
+
+  crs: EPSG:4326
+  tile_size:
+          longitude: 0.99981903
+          latitude: 0.99981903
+  resolution:
+          longitude: 0.000269493
+          latitude: -0.000269493
+  chunking:
+      longitude: 256
+      latitude: 256
+      time: 1
+  dimension_order: ['time', 'latitude', 'longitude']
+
+measurements:
+    - name: vh
+      dtype: float32
+      nodata: 0
+      units: 'DN'
+      resampling_method: nearest
+      src_varname: 'vh'
+      zlib: True
+      attrs:
+          long_name: "Terrain Corrected RADAR Gamma0 VH (L-Band)"
+          alias: "VH"
+    - name: vv
+      dtype: float32
+      nodata: 0
+      units: 'DN'
+      resampling_method: nearest
+      src_varname: 'vv'
+      zlib: True
+      attrs:
+          long_name: "Terrain Corrected RADAR Gamma0 VV (L-Band)"
+          alias: "VV"
