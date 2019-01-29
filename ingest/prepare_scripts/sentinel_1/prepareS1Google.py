@@ -82,7 +82,7 @@ def prep_dataset(path):
 
     scene_name = str(path)
 	
-    # print(scene_name)
+    print("Preparing scent {}".format(scene_name))
     t0=parse(scene_name.split("_")[-5].split(".")[0])
     # print(t0)
     t1=parse(scene_name.split("_")[-4].split(".")[0])
