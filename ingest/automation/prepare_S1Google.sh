@@ -40,10 +40,10 @@ for sceneid in `tail -n+2 ${data_path}/*.csv | cut -d, -f1`; do
   rm tmp/${sceneid}_Gamma0_VV.tif
   bandCounter=$((${bandCounter} + 1))
 
-  gdal_translate -b ${bandCounter} ${data_path}/*.tif tmp/${sceneid}_Gamma0_VW.tif ${COG_FLAGS_A}
-  gdaladdo -r average tmp/${sceneid}_Gamma0_VW.tif 2 4 8 16 32
-  gdal_translate tmp/${sceneid}_Gamma0_VW.tif out/${sceneid}/${sceneid}_Gamma0_VW.tif ${COG_FLAGS_B}
-  rm tmp/${sceneid}_Gamma0_VW.tif
+  gdal_translate -b ${bandCounter} ${data_path}/*.tif tmp/${sceneid}_Gamma0_VH.tif ${COG_FLAGS_A}
+  gdaladdo -r average tmp/${sceneid}_Gamma0_VH.tif 2 4 8 16 32
+  gdal_translate tmp/${sceneid}_Gamma0_VH.tif out/${sceneid}/${sceneid}_Gamma0_VH.tif ${COG_FLAGS_B}
+  rm tmp/${sceneid}_Gamma0_VH.tif
   bandCounter=$((${bandCounter} + 1))
 
   python3 ingest/prepare_scripts/sentinel_1/prepareS1Google.py out/${sceneid};
