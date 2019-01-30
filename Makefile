@@ -9,7 +9,7 @@ get-config:
 	tar -xzvf ingestS1GEE.tar
 
 example:
-	ingest/prepare_S1Google.sh
+	ingest/prepare_S1Google.sh data
 
 build:
 	docker build --tag crcsi/s1-procesor .

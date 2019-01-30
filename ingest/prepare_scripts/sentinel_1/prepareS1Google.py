@@ -63,8 +63,8 @@ bands = ['vh', 'vv']
 
 
 def band_name(path):
-    # name = path.stem
-    # position = name.find('_')
+    # print("Path is: {}".format(path))
+    layername = None
     if 'VH' in str(path):
         layername = 'vh'
     if 'VV' in str(path):
@@ -76,7 +76,7 @@ def prep_dataset(path):
 
     scene_name = str(path)
 	
-    print("Preparing scent {}".format(scene_name))
+    print("Preparing scene {}".format(scene_name))
     t0=parse(scene_name.split("_")[-5].split(".")[0])
     # print(t0)
     t1=parse(scene_name.split("_")[-4].split(".")[0])
