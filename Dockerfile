@@ -23,5 +23,5 @@ RUN pip3 install -r /code/requirements.txt \
 
 ADD ingest /code/ingest
 RUN mkdir -p /code/data && \
-RUN mkdir -p /code/tmp && \
+    mkdir -p /code/tmp && \
     mkdir -p /code/out
