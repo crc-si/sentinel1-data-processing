@@ -1,0 +1,7 @@
+version: "3.4"
+services:
+  processor:
+    build:  .
+    volumes:
+      - ./data:/code/data
+      - ./out:/code/out

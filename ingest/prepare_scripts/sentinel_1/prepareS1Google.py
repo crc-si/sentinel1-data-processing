@@ -9,19 +9,19 @@ each as ENVI format, that is, raw binary (.img) with ascii header (.hdr). GDAL c
 format (that is, when provided an img it checks for an accompanying hdr).
 """
 
-# get corner coords in crs of source datafile,
-# transform into crs of datacube index.
-#
-# TODO: datacube could perform this transformation itself rather than entrusting yamls.
-# This may support more careful consideration of datums, and issues such as the corner
-# coords failing to enclose the area due to curvature of the projected border segments.
-import rasterio
-from osgeo import osr
+import os
 import sys
-import click
-import yaml
+import uuid
 from pathlib import Path
+from xml.etree import ElementTree  # should use cElementTree..
+
+import click
+import rasterio
+import yaml
+from dateutil import parser
 from dateutil.parser import parse
+from osgeo import osr
+
 
 def get_geometry(path):
     with rasterio.open(path) as img:
@@ -58,12 +58,6 @@ def get_geometry(path):
 
         return projection, extent
 
-
-# Construct metadata dict
-import uuid
-from xml.etree import ElementTree  # should use cElementTree..
-from dateutil import parser
-import os
 
 bands = ['vh', 'vv']
 
